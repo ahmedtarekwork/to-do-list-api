@@ -11,7 +11,12 @@ const tasksRoutes = require("./routes/todos");
 
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => app.listen(4000, console.log(`listining on port: ${4000}`)));
+  .then(() =>
+    app.listen(
+      process.env.PORT || 4000,
+      console.log(`listining on port: ${4000}`)
+    )
+  );
 
 app.use(express.json());
 app.use(cors());
