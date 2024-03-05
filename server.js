@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -8,9 +10,7 @@ const app = express();
 const tasksRoutes = require("./routes/todos");
 
 mongoose
-  .connect(
-    "mongodb+srv://ihatemongo:ihatemongosoomuch2255@cluster0.vlertdw.mongodb.net/to-do-list?retryWrites=true&w=majority&appName=Cluster0"
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => app.listen(4000, console.log(`listining on port: ${4000}`)));
 
 app.use(express.json());
